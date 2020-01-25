@@ -38,9 +38,9 @@ GoblinIG = Goblin('Goblin')
 class Zombie():
     def __init__(self, name):
         self.name = name
-        self.max_health_points = 70
+        self.max_health_points = 150
         self.health_points = self.max_health_points
-        self.attack = 5
+        self.attack = 10
         self.gold_gain = 50
 ZombieIG = Zombie('Zombie')
 
@@ -141,10 +141,10 @@ def fight():
 
 def attack():
     os.system('clear')
-    hero_attack = random.randint(heroIG.attack / 2, heroIG.attack)
-    enemy_attack = random.randint(enemy.attack / 2, enemy.attack)
-    if hero_attack == heroIG.attack / 2:
-        print('-_- You missed wildly!')
+    hero_attack = random.randint(heroIG.attack - 2, heroIG.attack)
+    enemy_attack = random.randint(enemy.attack - 2, enemy.attack)
+    if hero_attack == heroIG.attack - 2:
+        print('You missed wildly!')
     else:
         enemy.health_points -= hero_attack
         print('You hit the creature! {} damaged taken by the shawdow dweller!'.format(hero_attack))
@@ -152,7 +152,7 @@ def attack():
     if enemy.health_points <= 0:
         win()
     os.system('clear')
-    if enemy_attack == enemy_attack / 2:
+    if enemy_attack == enemy_attack - 2:
         print("The foul beast missed!!")
     else:
         heroIG.health_points -= enemy_attack
@@ -166,8 +166,8 @@ def attack():
 
 def run():
     os.system('clear')
-    run_num = random.randint(1,4)   #Having issues with random.randint(1,4). Sometimes it works & sometimes it crashes the program. 
-    if run_num ==  1:               #The crashes seem to happen more often if the zombie is selected. The player can back away from zombie without issues but attacking zombie creates a crash everytime.
+    run_num = random.randint(1,4)    
+    if run_num ==  1:               
         print("Your legs carry you away from the battle, but your heart died that day and your thoughts never left the battle field.")
         option = input ('')
         setup_game2()
@@ -175,8 +175,8 @@ def run():
         print("Your legs feel like dead weight. The hour of challenge is at hand. Stand your ground!!!")
         option = input ('')
         os.system('clear')
-        enemy_attack = random.randint(enemy.attack /2, enemy.attack)
-        if enemy_attack == enemy_attack /2:
+        enemy_attack = random.randint(enemy.attack - 2, enemy.attack)
+        if enemy_attack == enemy_attack - 2:
             print("The foul beast missed!")
         else:
             heroIG.health_points -= enemy_attack
@@ -202,6 +202,7 @@ def dead():
     os.system('clear')
     print('{} are no longer among the living. You are dead. May your soul know peace.'.format(heroIG.name))
     option = input ('')
-    title_screen()
+    title_screen()             #change this to sys.exit() so game exits. Right now it starts player back at title_screen with full health but the enemies have same health from the last fight.
+
 
 title_screen()                  #Not sure why I need title_screen() back to back. If I remove either one it does not work. 
