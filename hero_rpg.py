@@ -103,7 +103,7 @@ def setup_game2():
     print( 'Type 1 or 2 & press enter.')
     print('')
     option = input('> ')
-    if option == '1':
+    if option == '1':                         #The logic for the the character sheet. 
         pre_fight()
     elif option == '2':
         sys.exit()
@@ -141,14 +141,14 @@ def fight():
 
 def attack():
     os.system('clear')
-    hero_attack = random.randint(heroIG.attack - 2, heroIG.attack)
+    hero_attack = random.randint(heroIG.attack - 2, heroIG.attack) #lowest attack will have 2 subtracted from it and the hightest attack will be unchanged.
     enemy_attack = random.randint(enemy.attack - 2, enemy.attack)
-    if hero_attack == heroIG.attack - 2:
+    if hero_attack == heroIG.attack - 2:                           
         print('You missed wildly!')
     else:
-        enemy.health_points -= hero_attack
+        enemy.health_points -= hero_attack                          #This takes the enemy health and has the hero attack subtract from it.
         print('You hit the creature! {} damaged taken by the shawdow dweller!'.format(hero_attack))
-    option = input('')  #This empty set acts as pauses. 
+    option = input('')  #This empty set acts as pauses.             #Once the enemy's health get to or less than 0 the code go to the win(), code runs and displays that the player won.
     if enemy.health_points <= 0:
         win()
     os.system('clear')
