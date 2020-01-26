@@ -1,5 +1,5 @@
 #Sean Page
-#Week 2, Python Project
+#Week 2, Python Project, Text Based RPG Game 01/27/20
 
 # In is a RPG game, the hero fights goblins and zombies. The hero has the following options:
 # 1. Fight a goblin or zombie. The fight encounters are random.
