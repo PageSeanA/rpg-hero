@@ -15,16 +15,16 @@ import random
 screen_with = 100
 
 """ HERO & ENEMY SETUP """
-
-class hero():
-    def __init__(self, name):
-        self.name = name
+                                        #Notes:
+class hero():                           #Classes allow the programer to initialize and store the state of the values so that it can be accessed later in the program. 
+    def __init__(self, name):           #A class defines the general behavior that a whole category of objects can follow and the info can be associated with those objects.     
+        self.name = name                     
         self.max_health_points = 100
         self.health_points = self.max_health_points
         self.attack = 20
         self.gold = 0
         self.game_over = False
-heroIG = hero(hero)
+heroIG = hero(hero)                             
 
 class Goblin():
     def __init__(self, name):
@@ -46,8 +46,8 @@ ZombieIG = Zombie('Zombie')
 
 """ MAIN TITLE SCREEN """
 
-def title_screen():
-    os.system('clear')                       #Calling a command from the OS that clears the terminal after each section to reduce clutter. 
+def title_screen():                          
+    os.system('clear')                       #Calls a command from the OS that clears the terminal after each section to reduce clutter. 
     print('##################################')
     print('#                                #')
     print('#       Welcome Brave One!       #')
@@ -141,14 +141,14 @@ def fight():
 
 def attack():
     os.system('clear')
-    hero_attack = random.randint(heroIG.attack - 2, heroIG.attack) #lowest attack will have 2 subtracted from it and the hightest attack will be unchanged.
+    hero_attack = random.randint(heroIG.attack - 2, heroIG.attack) #Lowest attack will have 2 subtracted from it and the hightest attack will be unchanged.
     enemy_attack = random.randint(enemy.attack - 2, enemy.attack)
     if hero_attack == heroIG.attack - 2:                           
         print('You missed wildly!')
     else:
-        enemy.health_points -= hero_attack                          #This takes the enemy health and has the hero attack subtract from it.
+        enemy.health_points -= hero_attack                         #This takes the enemy health and has the hero attack subtract from it.
         print('You hit the creature! {} damaged taken by the shawdow dweller!'.format(hero_attack))
-    option = input('')  #This empty set acts as pauses.             #Once the enemy's health get to or less than 0 the code go to the win(), code runs and displays that the player won.
+    option = input('')       #This empty set acts as pauses.       #Once the enemy's health get to or less than 0 the code go to the win(), code runs and displays that the player won.
     if enemy.health_points <= 0:
         win()
     os.system('clear')
@@ -200,11 +200,12 @@ def win():
 
 def dead():
     os.system('clear')
-    print('                                    +++GAME OVER+++')
+    print('                      ')
+    print('                                +++GAME OVER+++')
     print('                      ')
     print('{} is no longer among the living. You are dead. May your soul know peace.'.format(heroIG.name))
     option = input ('')
-    title_screen
+    sys.exit()
 
 
 title_screen()                  
