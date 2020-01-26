@@ -200,9 +200,11 @@ def win():
 
 def dead():
     os.system('clear')
-    print('{} are no longer among the living. You are dead. May your soul know peace.'.format(heroIG.name))
+    print('                                    +++GAME OVER+++')
+    print('                      ')
+    print('{} is no longer among the living. You are dead. May your soul know peace.'.format(heroIG.name))
     option = input ('')
-    title_screen()             #change this to sys.exit() so game exits. Right now it starts player back at title_screen with full health but the enemies have same health from the last fight.
+    title_screen
 
 
-title_screen()                  #Not sure why I need title_screen() back to back. If I remove either one it does not work. 
+title_screen()                  
