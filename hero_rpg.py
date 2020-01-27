@@ -7,8 +7,8 @@
 # 2. Run away from the fight which can randomly result in either escape or staying in the fight anyway. The hero may be hit while attempting to run.
 # 3. The hero can also gain gold from downed creatures. I subbed gold for power because what's an rpg without gold?!
 
-import sys
-import os
+import sys         #sys — System-specific parameters and functions. This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+import os          #The OS module in python provides functions for interacting with the operating system. OS, comes under Python's standard utility modules. This module provides a portable way of using operating system dependent functionality.
 import textwrap
 import time
 import random
@@ -26,11 +26,11 @@ class hero():                           #Classes allow the programer to initiali
         self.gold = 0
         self.game_over = False
 heroIG = hero(hero)   #heroIG is a variable sets a new instance of the class hero. It invokes the class hero() & has all of its attributes.           
-                                                    #Example
-class Goblin():                    #Could have coded #goblin = hero('goblin', 30, etc..) & would have done the sameting for zombie. 
-    def __init__(self, name):                                              
-        self.name = name                                
-        self.max_health_points = 30                  #etc... & whatever I wanted to have enemy inherit from class hero.
+                                        #Example:  class Hero()""
+class Goblin():                                     #    def __init__(self, name, max_health_points, health__points, attack, gold_gain)
+    def __init__(self, name):                       #Goblin = Hero(self, name, max_health_points, health__points, attack, gold_gain)                                              
+        self.name = name                            #Zombie = Hero(self, name, max_health_points, health__points, attack, gold_gain)    
+        self.max_health_points = 30                  
         self.health_points = self.max_health_points
         self.attack = 10
         self.gold_gain = 10
@@ -107,7 +107,7 @@ def setup_game2():
     if option == '1':                         #The logic for the the character sheet. 
         pre_fight()           #Could have used a while loop. Example, while option != '1' and option != '2:
     elif option == '2':                                                 #set_game2()
-        sys.exit()              #if a while loop was used I would have created a def option_picked with if & elif with the option with their paths. 
+        sys.exit()              #if a while loop was used I would have created a def option_picked with if & elif with their perspective call paths.
     else:
         setup_game2()
 

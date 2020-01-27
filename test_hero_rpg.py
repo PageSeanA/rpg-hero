@@ -1,3 +1,10 @@
+
+
+name = "sean"
+type(name)
+
+""""""
+
 #Sean Page
 
 # In is a RPG game, the hero fights goblins and zombies. The player has the following options:
