@@ -77,7 +77,7 @@ def setup_game():
     os.system('clear')                        # Clears the screen to reduce clutter. 
     print("Hello. You seem new to these parts. What is your name stranger?")
     option = input('> ')
-    global heroIG
+    global heroIG               #Global variable.
     heroIG = hero(option)
     setup_game2()
 
