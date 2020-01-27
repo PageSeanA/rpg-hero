@@ -1,5 +1,6 @@
-#Sean Page
-#Week 2, Python Project, Text Based RPG Game 01/27/20
+# Sean Page
+# Week 2,01/27/20
+# Python Project, Text Based RPG Game 
 
 # In is a RPG game, the hero fights goblins and zombies. The hero has the following options:
 # 1. Fight a goblin or zombie. The fight encounters are random.
@@ -16,20 +17,20 @@ screen_with = 100
 
 """ HERO & ENEMY SETUP """
                                         #Notes:
-class hero():                           #Classes allow the programer to initialize and store the state of the values so that it can be accessed later in the program. 
-    def __init__(self, name):           #A class defines the general behavior that a whole category of objects can follow and the info can be associated with those objects.     
-        self.name = name                     
-        self.max_health_points = 100
+class hero():                           #Classes allow the programer to initialize & store the state of the values so that it can be accessed later in the program. 
+    def __init__(self, name):           #A class defines the general behavior that a whole category of objects can follow & the info can be associated with those objects.     
+        self.name = name                # the __init__ is a constructor method. The info in the () are objects (aka parameters. The objects have... 
+        self.max_health_points = 100    #...attributes attached to them. In this example those attributes such as name, max_health_points, attack, etc..
         self.health_points = self.max_health_points
         self.attack = 20
         self.gold = 0
         self.game_over = False
-heroIG = hero(hero)                             
-
-class Goblin():
-    def __init__(self, name):
-        self.name = name
-        self.max_health_points = 30
+heroIG = hero(hero)   #heroIG is a variable sets a new instance of the class hero. It invokes the class hero() & has all of its attributes.           
+                                                    #Example
+class Goblin():                    #Could have coded #goblin = hero('goblin', 30, etc..) & would have done the sameting for zombie. 
+    def __init__(self, name):                                              
+        self.name = name                                
+        self.max_health_points = 30                  #etc... & whatever I wanted to have enemy inherit from class hero.
         self.health_points = self.max_health_points
         self.attack = 10
         self.gold_gain = 10
@@ -46,7 +47,7 @@ ZombieIG = Zombie('Zombie')
 
 """ MAIN TITLE SCREEN """
 
-def title_screen():                          
+def title_screen():                          #Defined a new method and named it title_screen().
     os.system('clear')                       #Calls a command from the OS that clears the terminal after each section to reduce clutter. 
     print('##################################')
     print('#                                #')
@@ -64,9 +65,9 @@ def title_screen():
     print('                                  ')
     option = input('> ')                        # Using > to mark input area for hero.
     if option.lower() == ('start game'):        # Using if, elif & while as conditions settings for the title screen.
-        setup_game() 
+        setup_game()                            #.lower method will make everthing lower so capitalization want create an error. 
     elif option.lower() == ('quit game'):
-        sys.exit()
+        sys.exit()                              
     else:
         title_screen()
 
@@ -91,7 +92,7 @@ def setup_game2():
     print('#                          #')
     print('############################')
     print('                            ')
-    print('Hero\'s Name:    {}'.format(heroIG.name))
+    print('Hero\'s Name:    {}'.format(heroIG.name))    #These could have been f'strings. print(f'Hero\'s Name: {heroIG.name}')
     print('Attack Power:    {}'.format(heroIG.attack))
     print('Health Points:   {}/{}'.format(heroIG.max_health_points, heroIG.health_points))
     print('Gold Pieces:     {}'.format(heroIG.gold))
@@ -104,15 +105,15 @@ def setup_game2():
     print('')
     option = input('> ')
     if option == '1':                         #The logic for the the character sheet. 
-        pre_fight()
-    elif option == '2':
-        sys.exit()
+        pre_fight()           #Could have used a while loop. Example, while option != '1' and option != '2:
+    elif option == '2':                                                 #set_game2()
+        sys.exit()              #if a while loop was used I would have created a def option_picked with if & elif with the option with their paths. 
     else:
         setup_game2()
 
 """ COMBAT """
 
-def pre_fight():
+def pre_fight():                        
     global enemy
     enemy_number = random.randint(1,2)
     if enemy_number == 1:
@@ -156,7 +157,7 @@ def attack():
         print("The foul beast missed!!")
     else:
         heroIG.health_points -= enemy_attack
-        print("You have been wounded! Blood flows from your injury. {} damanged taken.".format(enemy_attack))
+        print("The creature strikes and you have been wounded! Blood flows from your injury. {} damanged taken.".format(enemy_attack))
     option = input('')
     if heroIG.health_points <= 0:
         dead()
